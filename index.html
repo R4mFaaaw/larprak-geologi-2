@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoStruktur Studio 🦋 — Hafalan Laprak Riana Amelia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Lapisan Langit & Kupu-Kupu Halus -->
+  <div class="sky-backdrop" aria-hidden="true">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <span class="ambient-butterfly bf-1">🦋</span>
+    <span class="ambient-butterfly bf-2">🦋</span>
+    <span class="ambient-butterfly bf-3">🦋</span>
+  </div>
+
+  <!-- Layer Konfeti Kupu-Kupu untuk Selebrasi -->
+  <div id="butterfly-burst" class="butterfly-burst" aria-hidden="true"></div>
+
+  <!-- Header & Navigasi Utama -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#beranda" class="brand" data-nav="materi">
+        <span class="brand-badge">
+          <span class="butterfly-emblem" aria-hidden="true">🦋</span>
+        </span>
+        <div class="brand-text">
+          <span class="brand-title">GeoStruktur Studio</span>
+          <span class="brand-sub">Laprak Riana Amelia • Unikarta</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigasi Utama">
+        <button class="nav-btn is-active" data-tab="materi">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Materi</span>
+        </button>
+        <button class="nav-btn" data-tab="flashcard">
+          <svg viewBox="0 0 24 24" class="icon"><rect x="3" y="5" width="14" height="16" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v14"/></svg>
+          <span>Flashcard</span>
+        </button>
+        <button class="nav-btn" data-tab="minigames">
+          <svg viewBox="0 0 24 24" class="icon"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M6 12h4M8 10v4"/><circle cx="15.5" cy="11" r="1"/><circle cx="17.5" cy="13" r="1"/></svg>
+          <span>Minigames</span>
+        </button>
+        <button class="nav-btn" data-tab="ujian">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>Ujian & Soal</span>
+        </button>
+      </nav>
+
+      <div class="topbar-actions">
+        <div class="mastery-pill" title="Progres Hafalan Flashcard">
+          <span class="mastery-dot"></span>
+          <span id="header-mastery-text">0/42 Hafal</span>
+        </div>
+        <button id="open-music-btn" class="music-toggle-btn" aria-label="Buka Menu Musik">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span class="music-btn-label">Musik</span>
+          <span class="eq-bars" id="topbar-eq" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Ringkas Personal untuk Riana -->
+    <section class="hero-card">
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span>🦋</span>
+          <span>Teknik Pertambangan • NIM 250621272 • Semester III</span>
+        </div>
+        <h1>Semangat Menghafal, Riana Amelia 🦋</h1>
+        <p>
+          Semua materi <strong>Laporan Praktikum Geologi Struktur</strong> sudah dirangkum rapi menjadi catatan interaktif,
+          flashcard pintar, 4 minigames seru, ujian simulasi, dan menu musik penenang supaya belajar tetap nyaman.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" data-jump="flashcard">Mulai Flashcard</button>
+          <button class="btn btn-soft" data-jump="minigames">Main Minigames</button>
+          <button class="btn btn-outline" data-jump="ujian">Latihan Soal</button>
+        </div>
+      </div>
+
+      <div class="hero-stats-card">
+        <div class="stat-ring-wrap">
+          <svg class="stat-ring" viewBox="0 0 100 100">
+            <circle class="ring-bg" cx="50" cy="50" r="42" />
+            <circle class="ring-fg" id="hero-ring-fg" cx="50" cy="50" r="42" />
+          </svg>
+          <div class="stat-ring-label">
+            <strong id="hero-mastery-pct">0%</strong>
+            <span>Hafal</span>
+          </div>
+        </div>
+        <div class="hero-mini-metrics">
+          <div class="metric-item">
+            <span class="metric-val" id="metric-chapters">0/6</span>
+            <span class="metric-lbl">Bab Selesai</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-val" id="metric-best-quiz">-</span>
+            <span class="metric-lbl">Skor Ujian</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-val" id="metric-games-won">0</span>
+            <span class="metric-lbl">Game Menang</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 1: MATERI ==================== -->
+    <section id="tab-materi" class="tab-panel is-active">
+      <div class="panel-toolbar">
+        <div>
+          <h2>Ringkasan Materi & Katalog Simbol</h2>
+          <p class="muted">Aktifkan <strong>Mode Tutup Kata Kunci</strong> untuk menguji ingatan langsung di dalam bacaan.</p>
+        </div>
+        <div class="toolbar-controls">
+          <label class="switch-pill">
+            <input type="checkbox" id="toggle-blur-keywords" />
+            <span class="switch-slider"></span>
+            <span class="switch-text">Tutup Kata Kunci</span>
+          </label>
+          <button id="reveal-all-keywords" class="btn btn-soft btn-sm">Buka Semua</button>
+        </div>
+      </div>
+
+      <div class="materi-layout">
+        <aside class="chapter-sidebar" id="chapter-list" aria-label="Daftar Bab Laprak"></aside>
+        <article class="chapter-viewer glass-card" id="chapter-content"></article>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: FLASHCARD ==================== -->
+    <section id="tab-flashcard" class="tab-panel">
+      <div class="panel-toolbar">
+        <div>
+          <h2>Flashcard Hafalan Pintar 🦋</h2>
+          <p class="muted">Klik kartu atau tekan <kbd>Spasi</kbd> untuk membalik. Tandai tingkat hafalanmu.</p>
+        </div>
+        <div class="toolbar-controls">
+          <select id="fc-category" class="sky-select" aria-label="Kategori Flashcard">
+            <option value="all">Semua Materi (42)</option>
+            <option value="dasar">Bab I & Deformasi</option>
+            <option value="kekar_sesar">Kekar & Sesar</option>
+            <option value="lipatan">Lipatan (Antiklin & Sinklin)</option>
+            <option value="simbol">Simbol Peta Geologi</option>
+            <option value="geometri">Geometri & Rumus</option>
+            <option value="praktikum">Data & Hasil Praktikum</option>
+          </select>
+          <button id="fc-focus-unlearned" class="btn btn-soft btn-sm">Fokus Belum Hafal</button>
+          <button id="fc-shuffle" class="btn btn-soft btn-sm">Acak</button>
+          <button id="fc-reset-progress" class="btn btn-ghost btn-sm">Reset</button>
+        </div>
+      </div>
+
+      <div class="fc-stage-wrap">
+        <div class="fc-progress-row">
+          <span id="fc-counter">Kartu 1 dari 42</span>
+          <div class="fc-badges">
+            <span class="badge badge-rose" id="fc-count-hard">Belum: 0</span>
+            <span class="badge badge-amber" id="fc-count-mid">Ragu: 0</span>
+            <span class="badge badge-sky" id="fc-count-easy">Hafal: 0</span>
+          </div>
+        </div>
+
+        <div class="fc-card-scene">
+          <div class="fc-card" id="fc-card" tabindex="0" role="button" aria-label="Balik Flashcard">
+            <div class="fc-face fc-front">
+              <span class="fc-tag" id="fc-tag-front">Kategori</span>
+              <div id="fc-svg-front" class="fc-svg-box"></div>
+              <h3 id="fc-question">Pertanyaan</h3>
+              <span class="fc-hint">Ketuk kartu untuk melihat jawaban 🦋</span>
+            </div>
+            <div class="fc-face fc-back">
+              <span class="fc-tag">Jawaban Laprak</span>
+              <div id="fc-answer" class="fc-answer-body"></div>
+              <span class="fc-status-chip" id="fc-current-status"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fc-controls">
+          <button id="fc-prev" class="btn btn-outline">Sebelumnya</button>
+          <div class="fc-rate-group">
+            <button class="btn-rate rate-hard" data-rate="hard">Belum Hafal (1)</button>
+            <button class="btn-rate rate-mid" data-rate="mid">Masih Ragu (2)</button>
+            <button class="btn-rate rate-easy" data-rate="easy">Sudah Hafal (3)</button>
+          </div>
+          <button id="fc-next" class="btn btn-primary">Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: MINIGAMES ==================== -->
+    <section id="tab-minigames" class="tab-panel">
+      <div class="panel-toolbar">
+        <div>
+          <h2>Arena Minigames Interaktif 🦋</h2>
+          <p class="muted">Asah ingatan dengan permainan seru tanpa terasa seperti menghafal.</p>
+        </div>
+        <div class="game-selector-pills" id="game-tabs">
+          <button class="game-pill is-active" data-game="match">Pasangkan Kata Kunci</button>
+          <button class="game-pill" data-game="symbol">Tebak Simbol Peta</button>
+          <button class="game-pill" data-game="sort">Klasifikasi Cepat</button>
+          <button class="game-pill" data-game="lab">Lab Geometri & Python</button>
+        </div>
+      </div>
+
+      <div id="minigame-stage" class="glass-card minigame-stage"></div>
+    </section>
+
+    <!-- ==================== TAB 4: UJIAN & LATIHAN SOAL ==================== -->
+    <section id="tab-ujian" class="tab-panel">
+      <div class="panel-toolbar">
+        <div>
+          <h2>Ujian & Latihan Soal Geologi Struktur</h2>
+          <p class="muted">Uji kesiapan menghadapi responsi / ujian praktikum dengan pembahasan lengkap.</p>
+        </div>
+      </div>
+
+      <div id="quiz-stage" class="glass-card quiz-stage"></div>
+    </section>
+  </main>
+
+  <!-- Floating Mini-Player Bar (pojok kanan bawah) -->
+  <div id="mini-player" class="mini-player" aria-label="Pemutar Musik Mini">
+    <button id="mini-play-btn" class="mini-icon-btn" aria-label="Putar atau Jeda Musik">
+      <svg viewBox="0 0 24 24" class="icon" id="mini-play-icon"><polygon points="6,4 20,12 6,20"/></svg>
+    </button>
+    <div class="mini-info" id="mini-open-drawer">
+      <span class="mini-title" id="mini-track-title">Langit Biru (Piano Lembut)</span>
+      <span class="mini-sub" id="mini-track-status">Klik untuk pilih lagu tenang 🦋</span>
+    </div>
+    <button id="mini-next-btn" class="mini-icon-btn" aria-label="Lagu Berikutnya">
+      <svg viewBox="0 0 24 24" class="icon"><polygon points="5,4 15,12 5,20"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+    </button>
+  </div>
+
+  <!-- Slide-Over Drawer Menu Musik -->
+  <div id="music-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="music-drawer" class="music-drawer" aria-label="Menu Musik Menenangkan" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <span class="butterfly-emblem">🦋</span>
+        <div>
+          <h3>Menu Musik Tenang</h3>
+          <p>Folder <code>music/</code> • Teman Belajar Riana</p>
+        </div>
+      </div>
+      <button id="close-music-btn" class="icon-close-btn" aria-label="Tutup Menu Musik">
+        <svg viewBox="0 0 24 24" class="icon"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="now-playing-card">
+      <div class="album-art">
+        <span class="album-bf" id="album-bf">🦋</span>
+        <div class="vinyl-waves" id="vinyl-waves"><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="track-meta">
+        <strong id="player-title">Langit Biru (Piano Lembut)</strong>
+        <span id="player-subtitle">Instrumen Lo-Fi • Tenang</span>
+      </div>
+
+      <div class="scrubber-row">
+        <span id="time-current">0:00</span>
+        <input type="range" id="seek-slider" min="0" max="100" value="0" aria-label="Posisi Lagu" />
+        <span id="time-total">0:00</span>
+      </div>
+
+      <div class="player-controls">
+        <button id="btn-loop-mode" class="ctrl-btn" title="Mode Ulang">
+          <svg viewBox="0 0 24 24" class="icon"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </button>
+        <button id="btn-prev-track" class="ctrl-btn" aria-label="Lagu Sebelumnya">
+          <svg viewBox="0 0 24 24" class="icon"><polygon points="19,20 9,12 19,4"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+        </button>
+        <button id="btn-main-play" class="ctrl-play-btn" aria-label="Putar atau Jeda">
+          <svg viewBox="0 0 24 24" class="icon" id="main-play-icon"><polygon points="6,4 20,12 6,20"/></svg>
+        </button>
+        <button id="btn-next-track" class="ctrl-btn" aria-label="Lagu Berikutnya">
+          <svg viewBox="0 0 24 24" class="icon"><polygon points="5,4 15,12 5,20"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+        </button>
+        <button id="btn-sfx-toggle" class="ctrl-btn is-active" title="Efek Suara Lembut saat Menjawab">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M12 3l1.9 4.5L18 9.4l-4.1 1.9L12 16l-1.9-4.7L6 9.4l4.1-1.9z"/></svg>
+        </button>
+      </div>
+
+      <div class="volume-row">
+        <svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.02" value="0.55" aria-label="Volume Musik" />
+        <span id="volume-pct">55%</span>
+      </div>
+    </div>
+
+    <div class="playlist-header">
+      <h4>Daftar Putar Folder <code>music/</code></h4>
+      <label class="upload-music-btn">
+        <input type="file" id="local-music-input" accept="audio/*" multiple hidden />
+        <span>+ Tambah Lagu</span>
+      </label>
+    </div>
+
+    <ul id="playlist-list" class="playlist-list"></ul>
+
+    <div class="music-tip">
+      Taruh file <code>.mp3</code> atau <code>.wav</code> ke folder <code>music/</code> lalu jalankan lewat
+      <code>start_website.bat</code> agar otomatis muncul di sini, atau klik <strong>+ Tambah Lagu</strong> kapan saja.
+    </div>
+  </aside>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="js/svg-diagrams.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/flashcards.js"></script>
+  <script src="js/minigames.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
